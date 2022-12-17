@@ -1,0 +1,420 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center" style="width:1200px;height:680px;border:1px solid #ecfecf;border-radius:5px;min-height:750px;">
+    <div style="float:left;display:flex;width:74%;min-height:500px;">
+        <div class="card border-secondary mb-3" style="margin:0 auto;width:100%;">
+            <div class="card-header">Area Map</div>
+            <div class="card-body">
+                <img src="~/images/robot-status-board.jpg" usemap="#image_map" />
+                <map name="#image_map">
+                    <area shape="rect" coords="202,25,231,59" alt="robot" href="#" id="r1" />
+                    <area shape="rect" coords="71,404,101,445" alt="robot" href="#" id="r2" />
+                    <area shape="rect" coords="458,354,484,386" alt="robot" href="#" id="r3" />
+                    <area shape="rect" coords="722,98,752,139" alt="robot" href="#" id="r4" />
+                </map>
+            </div>
+        </div>
+    </div>
+    <div style="float:right; width:25%;">
+        <div style="margin:0 auto; text-align:center;display:inline-block; width:100%;">
+            <div class="card border-secondary mb-3">
+                <div class="card-header">Robot Status</div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12" onclick="ShowRobotStatus(1, 'Group', '25%', false);" style="display:inline-block;">
+                            <table class="table-active">
+                                <tr>
+                                    <td style="width:20%;border-bottom: 1px solid #fff;"><img src="~/images/robot.png" title="Robot 1" /></td>
+                                    <td>
+                                        <table style="width:100%;padding:2px;font-size:12px;" class="table-info">
+                                            <tr>
+                                                <td class="tdleft">Robot ID:</td>
+                                                <td class="tdright">1</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="tdleft">Battery Status:</td>
+                                                <td class="tdright">
+                                                    <div class="progress">
+                                                        <div class="progress-bar progress-bar-striped bg-success" id="batteryStatus" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="tdleft">Mode:</td>
+                                                <td class="tdright"><span id="RM1">Group</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="tdleft">Carrying Target?:</td>
+                                                <td class="tdright">
+                                                    <div class="custom-control custom-switch">
+                                                        <input type="checkbox" class="custom-control-input" disabled="" id="targetStatus" />
+                                                        <label class="custom-control-label" for="targetStatus"></label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-md-12" onclick="ShowRobotStatus(2, 'Follow', '50%', false);" style="display:inline-block;">
+                            <table class="table-active">
+                                <tr>
+                                    <td style="width:20%;border-bottom: 1px solid #fff;"><img src="~/images/robot.png" title="Robot 2" /></td>
+                                    <td>
+                                        <table style="width:100%;padding:2px;font-size:12px;" class="table-info">
+                                            <tr>
+                                                <td class="tdleft">Robot ID:</td>
+                                                <td class="tdright">2</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="tdleft">Battery Status: </td>
+                                                <td class="tdright">
+                                                    <div class="progress">
+                                                        <div class="progress-bar progress-bar-striped bg-success" id="batteryStatus" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="tdleft">Mode:</td>
+                                                <td class="tdright"><span id="RM2">Follow</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="tdleft">Carrying Target?:</td>
+                                                <td class="tdright">
+                                                    <div class="custom-control custom-switch">
+                                                        <input type="checkbox" class="custom-control-input" disabled="" id="targetStatus" />
+                                                        <label class="custom-control-label" for="targetStatus"></label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-md-12" onclick="ShowRobotStatus(3, 'Manual Drive', '43%', true);" style="display:inline-block;">
+                            <table class="table-active">
+                                <tr>
+                                    <td style="width:20%;border-bottom: 1px solid #fff;"><img src="~/images/robot.png" title="Robot 3" /></td>
+                                    <td>
+                                        <table style="width:100%;padding:2px;font-size:12px;" class="table-info">
+                                            <tr>
+                                                <td class="tdleft">Robot ID:</td>
+                                                <td class="tdright">3</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="tdleft">Battery Status:</td>
+                                                <td class="tdright">
+                                                    <div class="progress">
+                                                        <div class="progress-bar progress-bar-striped bg-success" id="batteryStatus" role="progressbar" style="width: 43%;" aria-valuenow="43" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="tdleft">Mode:</td>
+                                                <td class="tdright"><span id="RM3">Manual Drive</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="tdleft">Carrying Target?:</td>
+                                                <td class="tdright">
+                                                    <div class="custom-control custom-switch">
+                                                        <input type="checkbox" class="custom-control-input" disabled="" id="targetStatus" checked />
+                                                        <label class="custom-control-label" for="targetStatus"></label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-md-12" onclick="ShowRobotStatus(4, 'Group', '65%', false);" style="display:inline-block;">
+                            <table class="table-active">
+                                <tr>
+                                    <td style="width:20%;"><img src="~/images/robot.png" title="Robot 4" /></td>
+                                    <td>
+                                        <table style="width:100%;padding:2px;font-size:12px;" class="table-info">
+                                            <tr>
+                                                <td class="tdleft">Robot ID:</td>
+                                                <td class="tdright">4</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="tdleft">Battery Status:</td>
+                                                <td class="tdright">
+                                                    <div class="progress">
+                                                        <div class="progress-bar progress-bar-striped bg-success" id="batteryStatus" role="progressbar" style="width: 65%;" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="tdleft">Mode:</td>
+                                                <td class="tdright"><span id="RM4">Group</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="tdleft">Carrying Target?:</td>
+                                                <td class="tdright">
+                                                    <div class="custom-control custom-switch">
+                                                        <input type="checkbox" class="custom-control-input" disabled="" id="targetStatus" />
+                                                        <label class="custom-control-label" for="targetStatus"></label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="margin:0 auto; text-align:center;display:inline-block;width:100%;">
+            <div class="card border-secondary mb-3">
+                <div class="card-header">Context Sensitive Panel</div>
+                <div class="card-body">
+                    <table class="table-active" style="width:100%;">
+                        <tr>
+                            @*<td style="width:20%;border-bottom: 1px solid #fff;"><img src="~/Images/robot.png" /></td>*@
+                            <td>
+                                <h6>Selected Robot Status</h6>
+                                <div id="divSelRoboStatus" style="display:none;">
+                                    <table style="width:100%;padding:2px;font-size:12px;" class="table-info">
+                                        <tr>
+                                            <td class="tdleft">ID:</td>
+                                            <td class="tdright"><span id="selRoboID"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tdleft">Battery Status:</td>
+                                            <td class="tdright">
+                                                <div class="progress">
+                                                    <div class="progress-bar progress-bar-striped bg-success" id="selRoboBatteryStatus" role="progressbar" style="width: 65%;" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tdleft">Mode:</td>
+                                            <td class="tdright">
+                                                <select id="ddlSelRoboMode" class="form-control">
+                                                    <option value="0">Select Mode</option>
+                                                    <option value="Group">Group</option>
+                                                    <option value="Follow">Follow</option>
+                                                    <option value="Manual Drive">Manual Drive</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tdleft">Carrying Target?:</td>
+                                            <td class="tdright">
+                                                <div class="custom-control custom-switch">
+                                                    <input type="checkbox" class="custom-control-input" disabled="" id="selRoboTargetStatus" />
+                                                    <label class="custom-control-label" for="targetStatus"></label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div id="divBtns" style="display:none;">
+                                    <table style="width:100%;padding:2px;font-size:12px;" class="table-info">
+                                        <tr>
+                                            <td style="text-align:center" colspan="3"><div class="btn" id="btnUp"><img src="/images/up-arrow-32.png" /></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align:right"><div class="btn" id="btnLeft"><img src="/images/left-arrow-32.png" /></div></td>
+                                            <td style="text-align:left"><div class="btn" id="btnRight">Move</div></td>
+                                            <td style="text-align:left"><div class="btn" id="btnRight"><img src="/images/right-arrow-32.png" /></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align:center" colspan="3"><div class="btn" id="btnDown"><img src="/images/down-arrow-32.png" /></div></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div id="divIDInput" style="display:none;">
+                                    <select id="ddlRID" class="form-control">
+                                        <option value="0">Select Robot to Follow</option>
+                                        <option value="1">Robot 1</option>
+                                        <option value="2">Robot 2</option>
+                                        <option value="3">Robot 3</option>
+                                        <option value="4">Robot 4</option>
+                                    </select>
+                                    <button id="btnFollow" class="btn btn-primary">Submit</button>
+                                </div>
+                                <div id="divGrpMode" style="display:none;">
+                                    <select id="ddlGrpMode" class="form-control">
+                                        <option value="0">Select Group Behavior</option>
+                                        <option value="Flock">Flock</option>
+                                        <option value="Disperse">Disperse</option>
+                                    </select>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section styles{
+    <style>
+        img {
+            width: 100%;
+        }
+
+        .form-control {
+            font-size: 12px;
+        }
+
+        .tdleft {
+            text-align: right;
+            padding-right: 5px;
+        }
+
+        .tdright {
+            text-align: left;
+            width: 45%;
+            padding-left: 5px;
+        }
+
+        .robo1 {
+            left: 222px;
+            top: 90px;
+            width: 29px;
+            height: 39px;
+            border: 2px solid #ff006e;
+            z-index: 100;
+            position: absolute;
+        }
+
+        .robo2 {
+            left: 92px;
+            top: 475px;
+            width: 29px;
+            height: 39px;
+            border: 2px solid #ff006e;
+            z-index: 100;
+            position: absolute;
+        }
+
+        .robo3 {
+            left: 477px;
+            top: 422px;
+            width: 29px;
+            height: 34px;
+            border: 2px solid #ff006e;
+            z-index: 100;
+            position: absolute;
+        }
+
+        .robo4 {
+            left: 738px;
+            top: 167px;
+            width: 34px;
+            height: 42px;
+            border: 2px solid #ff006e;
+            z-index: 100;
+            position: absolute;
+        }
+    </style>
+}
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $('#ddlSelRoboMode').change(function () {
+                var sVal = $(this).val();
+                if (sVal === 'Group') {
+                    $('#divGrpMode').show();
+                    $('#divBtns').hide();
+                    $('#divIDInput').hide();
+                }
+                else if (sVal === 'Manual Drive') {
+                    $('#divBtns').show();
+                    $('#divGrpMode').hide();
+                    $('#divIDInput').hide();
+                }
+                else if (sVal === 'Follow') {
+                    $('#divIDInput').show();
+                    $('#divBtns').hide();
+                    $('#divGrpMode').hide();
+                }
+                else {
+                    $('#divBtns').hide();
+                    $('#divGrpMode').hide();
+                    $('#divIDInput').hide();
+                }
+                var id = $('#selRoboID').html();
+                $('#RM' + id).html(sVal);
+            });
+            $('#ddlGrpMode').change(function () {
+                var gb = $("#ddlGrpMode option:selected").html();
+                alert("Group Behavior: " + gb);
+            });
+            $('#btnFollow').click(function () {
+                if ($("#ddlRID").val() !== "0") {
+                    var rid = $("#ddlRID option:selected").html();
+                    alert("Following the " + rid);
+                }
+                else
+                    alert("Please, select a robot to follow.");
+            });
+        });
+        function ShowRobotStatus(id, mode, bStatus, tStatus) {
+            $('#lblRID').text(id);
+            $('#divSelRoboStatus').show();
+            if (id == 1) {
+                $('#r1').removeClass('robo1');
+                $('#r1').addClass('robo1');
+                $('#r2').removeClass('robo2');
+                $('#r3').removeClass('robo3');
+                $('#r4').removeClass('robo4');
+            }
+            if (id == 2) {
+                $('#r2').removeClass('robo2');
+                $('#r2').addClass('robo2');
+                $('#r1').removeClass('robo1');
+                $('#r3').removeClass('robo3');
+                $('#r4').removeClass('robo4');
+            }
+            if (id == 3) {
+                $('#r3').removeClass('robo3');
+                $('#r3').addClass('robo3');
+                $('#r1').removeClass('robo1');
+                $('#r2').removeClass('robo2');
+                $('#r4').removeClass('robo4');
+            }
+            if (id == 4) {
+                $('#r4').removeClass('robo4');
+                $('#r4').addClass('robo4');
+                $('#r1').removeClass('robo1');
+                $('#r2').removeClass('robo2');
+                $('#r3').removeClass('robo3');
+            }
+            $('#lblSelRobot').text('Selected Robot :' + id);
+            $('#selRoboID').html(id);
+            $('#selRoboBatteryStatus').css('width', bStatus);
+            $('#ddlSelRoboMode').val(mode);
+            $('#selRoboTargetStatus').prop('checked', tStatus);
+            if (mode === 'Group') {
+                $('#divGrpMode').show();
+                $('#divBtns').hide();
+                $('#divIDInput').hide();
+            }
+            else if (mode === 'Follow') {
+                $('#divIDInput').show();
+                $('#divBtns').hide();
+                $('#divGrpMode').hide();
+            }
+            else if (mode === 'Manual Drive') {
+                $('#divBtns').show();
+                $('#divGrpMode').hide();
+                $('#divIDInput').hide();
+            }
+            else {
+                $('#divBtns').hide();
+                $('#divGrpMode').hide();
+                $('#divIDInput').hide();
+            }
+        }
+    </script>
+}
